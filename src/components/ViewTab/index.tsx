@@ -3,6 +3,8 @@ import React from "react";
 import { Flex, Text } from "@chakra-ui/react";
 import useSelectFile from "@/hooks/useSelectFile";
 import TabItem from "./TabItem";
+import Portfolio from "../Portfolio";
+import Resume from "../Resume";
 
 type indexProps = {};
 
@@ -34,9 +36,9 @@ const Index: React.FC<indexProps> = () => {
           </>
         ))}
       </Flex>
-      <Flex p={4}>
-        {selectedTab === "Portfolio" && <Text> Portfolio Selected</Text>}
-        {selectedTab === "Resume" && <Text> Resume Selected</Text>}
+      <Flex>
+        {selectedTab === "Portfolio" && <Portfolio />}
+        {selectedTab === "Resume" && <Resume />}
       </Flex>
     </Flex>
   );

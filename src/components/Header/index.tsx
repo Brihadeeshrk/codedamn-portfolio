@@ -24,7 +24,7 @@ const index: React.FC<indexProps> = () => {
       align="center"
       width="100%"
       justify="space-between"
-      className="p-3 top-0 fixed bg-white shadow-2xl z-50 font-bold"
+      className="p-3 top-0 fixed bg-white shadow-2xl z-[999] font-bold"
     >
       {/* Codedamn logo */}
       <Text>codedamn</Text>
