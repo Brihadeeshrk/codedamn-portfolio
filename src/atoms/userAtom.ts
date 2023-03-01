@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-export interface User {
+export interface UserDetails {
   id: string;
   about_me: string;
   interests: string[];
@@ -20,10 +20,9 @@ export interface User {
 }
 
 export interface Stats {
-  streak: number;
-  league: string;
+  name: string;
   points: number;
-  karma: number;
+  league?: string;
 }
 
 export interface Project {
@@ -63,5 +62,25 @@ export interface Education {
 }
 
 interface UserState {
-  // user:
+  myWork: Work[];
+  myEducation: Education[];
+  myCertificates: Certificate[];
+  myPlaygrounds: Playground[];
+  myProjects: Project[];
+  myStats: Stats[];
+  currentUser?: UserDetails;
 }
+
+const defaultUserState: UserState = {
+  myWork: [],
+  myEducation: [],
+  myCertificates: [],
+  myPlaygrounds: [],
+  myProjects: [],
+  myStats: [],
+};
+
+export const userState = atom<UserState>({
+  key: "userState",
+  default: defaultUserState,
+});

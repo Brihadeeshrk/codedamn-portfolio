@@ -1,9 +1,10 @@
 import Image from "next/image";
 import React from "react";
 import { BiEdit } from "react-icons/bi";
+import { UserDetails } from "../../atoms/userAtom";
 
 type indexProps = {
-  user: User;
+  user: UserDetails;
 };
 
 const index: React.FC<indexProps> = ({ user }) => {
