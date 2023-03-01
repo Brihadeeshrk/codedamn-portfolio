@@ -3,9 +3,12 @@ import React from "react";
 
 type indexProps = {
   level: number;
+  top: string;
+  height: string;
+  width: string;
 };
 
-const index: React.FC<indexProps> = ({ level }) => {
+const index: React.FC<indexProps> = ({ level, top, height, width }) => {
   return (
     <Flex
       position="relative"
@@ -13,12 +16,12 @@ const index: React.FC<indexProps> = ({ level }) => {
       align="center"
       justify="center"
       left="-30%"
-      top="-12.5px"
+      top={top ? top : ""}
     >
       <Image
         src="assets/levelBadge.png"
-        height="40px"
-        width="40px"
+        height={height}
+        width={width}
         alt="Badge"
         className="relative"
       />

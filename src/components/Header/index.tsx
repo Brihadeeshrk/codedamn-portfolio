@@ -80,7 +80,7 @@ const index: React.FC<indexProps> = () => {
               width="40px"
               className="relative rounded-full"
             />
-            <LevelBadge level={2} />
+            <LevelBadge level={2} top="-12.5px" height="40px" width="40px" />
           </Flex>
         </Flex>
       </Flex>

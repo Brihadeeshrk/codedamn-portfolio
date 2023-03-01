@@ -2,6 +2,7 @@ import { Badge, Box, Button, Flex, Image, Text, Icon } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
 import { CiLocationOn } from "react-icons/ci";
+import LevelBadge from "@/components/LevelBadge";
 
 type indexProps = {};
 
@@ -29,7 +30,7 @@ const index: React.FC<indexProps> = () => {
     <Flex
       className="bg-white rounded-lg mt-24"
       direction="column"
-      margin="10% auto"
+      margin="15% auto"
       maxWidth="728px"
     >
       {/* Banner */}
@@ -44,15 +45,27 @@ const index: React.FC<indexProps> = () => {
           variant="banner"
           right="10%"
           top="10px"
-          fontSize={{ sm: "7pt", md: "8pt" }}
-          className="z-50"
+          height="20pt"
+          fontSize="7pt"
+          className="p-1 z-50"
         >
           Edit cover
         </Button>
       </Flex>
       {/* Details */}
       <Flex width="100%" className="rounded-b-xl border-2 border-slate-100">
-        <Flex width="25%"></Flex>
+        <Flex width="25%">
+          <Image
+            src="/assets/stock.jpeg"
+            alt="Profile Picture"
+            height="40%"
+            className="z-50 rounded-full"
+            border="2px solid white"
+            mt={-16}
+            ml={4}
+          />
+          <LevelBadge level={2} top="-10%" height="100px" width="100px" />
+        </Flex>
         <Flex width="75%" direction="column" className="p-3">
           {/* Name and Badges */}
           <Flex width="100%" align="center" className="mt-4">
