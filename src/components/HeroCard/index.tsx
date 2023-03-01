@@ -30,7 +30,7 @@ const index: React.FC<indexProps> = () => {
     <Flex
       className="bg-white rounded-lg mt-24"
       direction="column"
-      margin="15% auto"
+      margin="15% auto 5% auto"
       maxWidth="728px"
     >
       {/* Banner */}
@@ -66,7 +66,7 @@ const index: React.FC<indexProps> = () => {
             className="z-50 rounded-full"
             border="2px solid white"
             mt={{ sm: -10, md: -16 }}
-            ml={4}
+            ml={{ sm: 4, md: 8 }}
           />
           {/* <LevelBadge level={2} top="-10%" height="100px" width="100px" /> */}
         </Flex>

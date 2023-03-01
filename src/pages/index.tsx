@@ -1,4 +1,5 @@
 import HeroCard from "@/components/HeroCard";
+import ViewTab from "@/components/ViewTab";
 import Head from "next/head";
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
       </Head>
 
       <HeroCard />
+      <ViewTab />
     </>
   );
 }
