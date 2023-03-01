@@ -10,7 +10,7 @@ const index: React.FC<indexProps> = ({ children }) => {
   return (
     <>
       <Header />
-      <Box margin="0px auto" mt="60px" width="70%">
+      <Box margin="0px auto" mt="60px" width="75%">
         {children}
       </Box>
     </>

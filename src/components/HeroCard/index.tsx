@@ -2,7 +2,7 @@ import { Badge, Box, Button, Flex, Image, Text, Icon } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
 import { CiLocationOn } from "react-icons/ci";
-import LevelBadge from "@/components/LevelBadge";
+import { FiEdit } from "react-icons/fi";
 
 type indexProps = {};
 
@@ -40,31 +40,35 @@ const index: React.FC<indexProps> = () => {
           alt="Banner Image"
           position="relative"
         />
-        <Button
-          position="relative"
-          variant="banner"
-          right="10%"
-          top="10px"
-          height="20pt"
-          fontSize="7pt"
-          className="p-1 z-50"
-        >
-          Edit cover
-        </Button>
+        <Box>
+          <Button
+            position="relative"
+            variant="banner"
+            right="100px"
+            top="10px"
+            height="20pt"
+            fontSize="7pt"
+            className="p-1 z-50"
+          >
+            <Icon as={FiEdit} className="mr-2" />
+            Edit cover
+          </Button>
+        </Box>
       </Flex>
+
       {/* Details */}
       <Flex width="100%" className="rounded-b-xl border-2 border-slate-100">
         <Flex width="25%">
           <Image
             src="/assets/stock.jpeg"
             alt="Profile Picture"
-            height="40%"
+            height={{ sm: "20%", md: "40%" }}
             className="z-50 rounded-full"
             border="2px solid white"
-            mt={-16}
+            mt={{ sm: -10, md: -16 }}
             ml={4}
           />
-          <LevelBadge level={2} top="-10%" height="100px" width="100px" />
+          {/* <LevelBadge level={2} top="-10%" height="100px" width="100px" /> */}
         </Flex>
         <Flex width="75%" direction="column" className="p-3">
           {/* Name and Badges */}
@@ -98,8 +102,8 @@ const index: React.FC<indexProps> = () => {
             {badges.map((item, index) => (
               <Badge
                 key={index}
-                className="mr-1"
-                fontSize={{ sm: "7pt", md: "9pt" }}
+                className="mr-2 mb-2 p-1 rounded-lg"
+                fontSize={{ sm: "7pt", md: "8pt" }}
               >
                 {item}
               </Badge>
@@ -121,7 +125,7 @@ const index: React.FC<indexProps> = () => {
                   <Image
                     src={item.image}
                     alt="socials"
-                    height={{ sm: "5pt", md: "15pt" }}
+                    width={{ sm: "12pt", md: "15pt" }}
                   />
                 </Link>
               </Box>
