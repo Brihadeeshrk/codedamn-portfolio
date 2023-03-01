@@ -1,95 +1,70 @@
 import Image from "next/image";
 import React from "react";
+import { BiEdit } from "react-icons/bi";
 
-type indexProps = {};
+type indexProps = {
+  user: User;
+};
 
-const index: React.FC<indexProps> = () => {
+const index: React.FC<indexProps> = ({ user }) => {
   return (
-    // <div className="w-8/12 h-auto md:h-96 flex align-center justify-center mt-5 ml-auto mr-auto bg-red-300 rounded-md p-4">
-    //   <div className="w-full">
-    //     {/* Top Half */}
-    //     <div className="flex h-2/6 border-2 border-white">
-    //       <button className="hidden md:flex p-3 bg-slate-100 px-1 py-1 border-2 border-green-300">
-    //         Edit Cover
-    //       </button>
-    //     </div>
-
-    //     {/* Bottom Half */}
-    //     <div className="flex h-4/6 bg-white mt-3">
-    //       <Image
-    //         src="/assets/stock.jpeg"
-    //         alt="Profile Picture"
-    //         width={120}
-    //         height={120}
-    //         className="border-2 border-green-300 rounded-full top-24"
-    //       />
-    //       <h1>hihi</h1>
-    //     </div>
-    //   </div>
-    // </div>
-
-    <div class="relative max-w-md mx-auto md:max-w-2xl mt-6 min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-xl mt-16">
-      <div class="px-6">
-        <div class="flex flex-wrap justify-center">
-          <div class="w-full text-center mt-20">
-            <div class="flex justify-center lg:pt-4 pt-8 pb-0">
-              <div class="p-3 text-center">
-                <span class="text-xl font-bold block uppercase tracking-wide text-slate-700">
-                  3,360
-                </span>
-                <span class="text-sm text-slate-400">Photos</span>
-              </div>
-              <div class="p-3 text-center">
-                <span class="text-xl font-bold block uppercase tracking-wide text-slate-700">
-                  2,454
-                </span>
-                <span class="text-sm text-slate-400">Followers</span>
-              </div>
-
-              <div class="p-3 text-center">
-                <span class="text-xl font-bold block uppercase tracking-wide text-slate-700">
-                  564
-                </span>
-                <span class="text-sm text-slate-400">Following</span>
-              </div>
+    <div className="relative max-w-md mx-auto md:max-w-2xl mt-28 min-w-0 break-words bg-white w-full shadow-lg rounded-xl ">
+      {/* Banner */}
+      <div className="mt-6 py-6 border-b border-slate-200 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-md">
+        <div className="flex flex-wrap">
+          <div className="w-full px-10 h-36">
+            <div className="hidden md:flex ml-[30em] border-2 border-white hover:border-slate-100 align-center justify-center cursor-pointer font-normal text-white hover:text-slate-100 bg-[rgba(255, 255, 255, 0.2)] p-1 rounded-md">
+              <BiEdit className="h-5 mr-2" />
+              Edit Cover
             </div>
           </div>
         </div>
-        <div class="text-center mt-2">
-          <h3 class="text-2xl text-slate-700 font-bold leading-normal mb-1">
-            Mike Thompson
-          </h3>
-          <div class="text-xs mt-0 mb-2 text-slate-400 font-bold uppercase">
-            <i class="fas fa-map-marker-alt mr-2 text-slate-400 opacity-75"></i>
-            Paris, France
-          </div>
+      </div>
+
+      {/* Profile Pic */}
+      <div className="w-full flex justify-start ml-20">
+        <div className="relative">
+          <Image
+            src="/assets/stock.jpeg"
+            className="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-14 lg:-ml-16 max-w-[150px]"
+            height={150}
+            width={150}
+            alt=""
+          />
         </div>
-        <div className="w-full flex justify-start">
-          <div class="relative">
-            <Image
-              src="/assets/stock.jpeg"
-              class="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]"
-              height={150}
-              width={150}
-            />
-          </div>
-        </div>
-        <div className="mt-6 py-6 border-t border-slate-200 text-center">
-          <div class="flex flex-wrap justify-center">
-            <div class="w-full px-4">
-              <p class="font-light leading-relaxed text-slate-600 mb-4">
-                An artist of considerable range, Mike is the name taken by
-                Melbourne-raised, Brooklyn-based Nick Murphy writes, performs
-                and records all of his own music, giving it a warm.
-              </p>
-              <a
-                href="javascript:;"
-                class="font-normal text-slate-700 hover:text-slate-400"
-              >
-                Follow Account
-              </a>
+      </div>
+      <div className="flex flex-wrap justify-center">
+        <div className="w-full text-center mt-20">
+          <div className="flex justify-center lg:pt-4 pt-8 pb-0">
+            <div className="p-3 text-center">
+              <span className="text-xl font-bold block uppercase tracking-wide text-slate-700">
+                3,360
+              </span>
+              <span className="text-sm text-slate-400">Photos</span>
+            </div>
+            <div className="p-3 text-center">
+              <span className="text-xl font-bold block uppercase tracking-wide text-slate-700">
+                2,454
+              </span>
+              <span className="text-sm text-slate-400">Followers</span>
+            </div>
+
+            <div className="p-3 text-center">
+              <span className="text-xl font-bold block uppercase tracking-wide text-slate-700">
+                564
+              </span>
+              <span className="text-sm text-slate-400">Following</span>
             </div>
           </div>
+        </div>
+      </div>
+      <div className="text-center mt-2">
+        <h3 className="text-2xl text-slate-700 font-bold leading-normal mb-1">
+          Mike Thompson
+        </h3>
+        <div className="text-xs mt-0 mb-2 text-slate-400 font-bold uppercase">
+          <i className="fas fa-map-marker-alt mr-2 text-slate-400 opacity-75"></i>
+          Paris, France
         </div>
       </div>
     </div>
