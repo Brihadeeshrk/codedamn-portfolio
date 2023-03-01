@@ -4,10 +4,10 @@ import { BiEdit } from "react-icons/bi";
 import { UserDetails } from "../../atoms/userAtom";
 
 type indexProps = {
-  user: UserDetails;
+  // user: UserDetails;
 };
 
-const index: React.FC<indexProps> = ({ user }) => {
+const index: React.FC<indexProps> = ({}) => {
   return (
     <div className="relative max-w-md mx-auto md:max-w-2xl mt-28 min-w-0 break-words bg-white w-full shadow-lg rounded-xl ">
       {/* Banner */}
