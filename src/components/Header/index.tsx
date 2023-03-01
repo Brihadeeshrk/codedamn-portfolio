@@ -10,7 +10,6 @@ import {
   Image,
 } from "@chakra-ui/react";
 import React from "react";
-import RightContent from "./RightContent";
 import { BsFillLightningChargeFill, BsBell } from "react-icons/bs";
 
 import { BsSearch, BsArrowDown } from "react-icons/bs";

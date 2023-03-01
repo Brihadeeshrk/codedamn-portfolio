@@ -1,3 +1,4 @@
+import { Box } from "@chakra-ui/react";
 import React from "react";
 import Header from "../Header";
 
@@ -9,7 +10,9 @@ const index: React.FC<indexProps> = ({ children }) => {
   return (
     <>
       <Header />
-      {children}
+      <Box margin="0px auto" mt="60px" width="70%">
+        {children}
+      </Box>
     </>
   );
 };
