@@ -1,14 +1,15 @@
 import type { AppProps } from "next/app";
 import "../styles/globals.css";
 import Layout from "@/components/Layout";
-import Container from "@/components/Layout/Container";
+import { ChakraProvider } from "@chakra-ui/react";
+import { theme } from "../chakra/theme";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <Layout>
-      <Container>
+    <ChakraProvider theme={theme}>
+      <Layout>
         <Component {...pageProps} />
-      </Container>
-    </Layout>
+      </Layout>
+    </ChakraProvider>
   );
 }

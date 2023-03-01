@@ -11,23 +11,26 @@ const index: React.FC<indexProps> = ({ user }) => {
   return (
     <div className="relative max-w-md mx-auto md:max-w-2xl mt-28 min-w-0 break-words bg-white w-full shadow-lg rounded-xl ">
       {/* Banner */}
-      <div className="mt-6 py-6 border-b border-slate-200 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-md">
+      <div className="mt-6 py-6 border-b border-slate-200 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl rounded-br-none rounded-bl-none">
         <div className="flex flex-wrap">
           <div className="w-full px-10 h-36">
-            <div className="hidden md:flex ml-[30em] border-2 border-white hover:border-slate-100 align-center justify-center cursor-pointer font-normal text-white hover:text-slate-100 bg-[rgba(255, 255, 255, 0.2)] p-1 rounded-md">
+            <div className="hidden md:flex ml-[30em] border-2 border-white hover:border-slate-100 align-center justify-center cursor-pointer font-normal text-white hover:text-slate-100 bg-[rgba(255, 255, 255, 0.5)] p-1  ">
               <BiEdit className="h-5 mr-2" />
-              Edit Cover
+              Edit cover
             </div>
           </div>
         </div>
       </div>
+
+      {/* <Flex border='2' borderRadius='6' >
+       */}
 
       {/* Profile Pic */}
       <div className="w-full flex justify-start ml-20">
         <div className="relative">
           <Image
             src="/assets/stock.jpeg"
-            className="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-14 lg:-ml-16 max-w-[150px]"
+            className="shadow-xl rounded-full align-middle border-2 border-white absolute -m-16 -ml-14 lg:-ml-16 max-w-[150px]"
             height={150}
             width={150}
             alt=""
