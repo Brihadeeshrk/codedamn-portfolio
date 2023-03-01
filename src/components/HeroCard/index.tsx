@@ -1,4 +1,5 @@
 import { Badge, Box, Button, Flex, Image, Text, Icon } from "@chakra-ui/react";
+import Link from "next/link";
 import React from "react";
 import { CiLocationOn } from "react-icons/ci";
 
@@ -16,8 +17,21 @@ const index: React.FC<indexProps> = () => {
     "Next",
     "Firebase",
   ];
+
+  const socials = [
+    { image: "/assets/google.png", link: "" },
+    { image: "/assets/insta.png", link: "" },
+    { image: "/assets/fb.webp", link: "" },
+    { image: "/assets/li.png", link: "https://linkedin.com/in/brihadeeshrk" },
+    { image: "/assets/yt.png", link: "" },
+  ];
   return (
-    <Flex className="bg-red-300 rounded-lg mt-24" direction="column">
+    <Flex
+      className="bg-white rounded-lg mt-24"
+      direction="column"
+      margin="10% auto"
+      maxWidth="728px"
+    >
       {/* Banner */}
       <Flex direction="row" width="100%">
         <Image
@@ -30,23 +44,29 @@ const index: React.FC<indexProps> = () => {
           variant="banner"
           right="10%"
           top="10px"
-          fontSize="8pt"
+          fontSize={{ sm: "7pt", md: "8pt" }}
           className="z-50"
         >
           Edit cover
         </Button>
       </Flex>
       {/* Details */}
-      <Flex width="100%" className="bg-yellow-300">
-        <Flex width="30%"></Flex>
-        <Flex width="70%" direction="column">
+      <Flex width="100%" className="rounded-b-xl border-2 border-slate-100">
+        <Flex width="25%"></Flex>
+        <Flex width="75%" direction="column" className="p-3">
           {/* Name and Badges */}
-          <Flex width="100%" align="center">
+          <Flex width="100%" align="center" className="mt-4">
             <Text className="font-bold mr-2">Brihadeesh R K</Text>
-            <Badge className="mr-2" colorScheme="green">
+            <Badge
+              className="mr-2"
+              colorScheme="green"
+              fontSize={{ sm: "7pt", md: "9pt" }}
+            >
               Pro
             </Badge>
-            <Badge colorScheme="blue">Looking for a Job</Badge>
+            <Badge colorScheme="blue" fontSize={{ sm: "7pt", md: "9pt" }}>
+              Looking for a Job
+            </Badge>
           </Flex>
 
           {/* Bio */}
@@ -63,17 +83,45 @@ const index: React.FC<indexProps> = () => {
           {/* Skill Badges */}
           <Box className="mt-6">
             {badges.map((item, index) => (
-              <Badge key={index} className="mr-1">
+              <Badge
+                key={index}
+                className="mr-1"
+                fontSize={{ sm: "7pt", md: "9pt" }}
+              >
                 {item}
               </Badge>
             ))}
           </Box>
 
           {/* Divider */}
-          <Box className="mt-6 border-2 border-white border-b-gray-400" />
+          <Box className="mt-6 border-2 border-white border-b-gray-100" />
 
           {/* Socials */}
-          <Box className="mt-6"></Box>
+          <Flex className="mt-6 mb-10" align="center">
+            {socials.map((item, index) => (
+              <Box
+                key={index}
+                className="border-2 border-slate-100 p-1 rounded-md"
+                mr={5}
+              >
+                <Link href={item.link}>
+                  <Image
+                    src={item.image}
+                    alt="socials"
+                    height={{ sm: "5pt", md: "15pt" }}
+                  />
+                </Link>
+              </Box>
+            ))}
+            <Button
+              variant="banner"
+              color="black"
+              bg="gray.100"
+              height={{ sm: "7pt", md: "25pt" }}
+            >
+              Follow
+            </Button>
+          </Flex>
         </Flex>
       </Flex>
     </Flex>
