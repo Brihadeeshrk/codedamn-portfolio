@@ -7,10 +7,13 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/clientApp";
 import { authModalState } from "@/atoms/authModalAtom";
 import { useSetRecoilState } from "recoil";
+import { createPortfolioState } from "../atoms/createPortfolioAtom";
+import CreatePortfolio from "@/components/Modal/CreatePortfolio";
 
 export default function Home() {
   const [user] = useAuthState(auth);
   const setAuthModalState = useSetRecoilState(authModalState);
+  const setCreateModalState = useSetRecoilState(createPortfolioState);
 
   return (
     <>
@@ -21,8 +24,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <HeroCard />
-      <ViewTab />
+      {/* <HeroCard />
+      <ViewTab /> */}
 
       <Flex
         direction="column"
@@ -32,7 +35,23 @@ export default function Home() {
         className="p-3 mt-24 rounded-lg"
       >
         {user ? (
-          <></>
+          <>
+            <Text className="text-2xl font-black mb-2">
+              Let&apos;s build your portfolio!
+            </Text>
+
+            {/* <Link href="/edit"> */}
+            <CreatePortfolio />
+            <Button
+              onClick={() => {
+                // setAuthModalState({ open: true, view: "login" });
+                setCreateModalState({ open: true });
+              }}
+            >
+              Build
+            </Button>
+            {/* </Link> */}
+          </>
         ) : (
           <>
             <Text className="text-2xl font-black mb-2">

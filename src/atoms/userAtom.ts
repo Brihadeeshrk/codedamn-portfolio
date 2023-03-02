@@ -6,7 +6,6 @@ export interface UserDetails {
   interests: string[];
   languages: string[];
   techSkills: string[];
-  privcyType: "public" | "private";
   banner: {
     name: string;
     bannerURL?: string;
