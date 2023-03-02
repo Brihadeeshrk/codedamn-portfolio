@@ -1,14 +1,4 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Image,
-  Input,
-  Select,
-  Switch,
-  Text,
-  Textarea,
-} from "@chakra-ui/react";
+import { Button, Flex, Input, Text } from "@chakra-ui/react";
 import React from "react";
 
 type IndexProps = {};
