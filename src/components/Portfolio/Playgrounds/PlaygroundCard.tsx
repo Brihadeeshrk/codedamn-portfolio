@@ -10,7 +10,7 @@ const PlaygroundCard: React.FC<PlaygroundCardProps> = ({ PlaygroundStats }) => {
   return (
     <Flex
       width="100%"
-      className="bg-slate-100 p-2 mt-2 rounded-lg"
+      className="bg-slate-100 p-2 mt-2 rounded-lg cursor-pointer"
       direction="row"
     >
       <Flex width="20%">
