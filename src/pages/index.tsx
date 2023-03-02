@@ -1,9 +1,14 @@
 import HeroCard from "@/components/HeroCard";
 import ViewTab from "@/components/ViewTab";
-import { Flex, Image, Text } from "@chakra-ui/react";
+import { Button, Flex, Image, Text } from "@chakra-ui/react";
 import Head from "next/head";
+import Link from "next/link";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/firebase/clientApp";
 
 export default function Home() {
+  const [user] = useAuthState(auth);
+
   return (
     <>
       <Head>
@@ -21,12 +26,43 @@ export default function Home() {
         align="center"
         justify="center"
         width="100%"
-        className="p-3 mt-24 bg-yellow-100 rounded-lg"
+        className="p-3 mt-24 rounded-lg"
       >
-        <Text className="text-2xl font-black mb-8">
-          Want a portfolio just like this?
-        </Text>
-        <Image src="/assets/banner2.png" alt="sample banner" width="100%" />
+        {user ? (
+          <></>
+        ) : (
+          <>
+            <Text className="text-2xl font-black mb-2">
+              Why do you need a portfolio?
+            </Text>
+            <Text className="text-md text-center mb-8">
+              To showcase your knowledge, skills, projects, and work experience,
+              every developer must have a coding profile page like{" "}
+              <Link target="_blank" href="https://codedamn.com/user/mehulmpt">
+                <span className="text-indigo-700 font-bold ">this</span>
+              </Link>
+              . This page serves two main purposes: to act as a public
+              portfolio, eliminate the need for a separate custom portfolio
+              website, and provide a quick and comprehensive overview for
+              potential employers.
+            </Text>
+
+            <Text className="text-2xl font-black mb-4">
+              Want a portfolio just like this?
+            </Text>
+            <Image
+              src="/assets/banner2.png"
+              alt="sample banner"
+              width="100%"
+              className="rounded-lg mask1"
+            />
+
+            <Text className="text-2xl font-black mt-2 mb-2">
+              Log in to make your own!
+            </Text>
+            <Button>Log in</Button>
+          </>
+        )}
       </Flex>
     </>
   );

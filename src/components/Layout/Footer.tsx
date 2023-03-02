@@ -11,7 +11,7 @@ const Footer: React.FC<FooterProps> = () => {
       direction="column"
       align="center"
       justify="center"
-      className="z-[999] p-4 bg-yellow-100 mt-24 h-16"
+      className="z-[999] p-4 bg-indigo-100 mt-24 h-16"
       bottom="0"
       width="100%"
       position="fixed"
