@@ -17,14 +17,21 @@ import { auth } from "@/firebase/clientApp";
 import { BsSearch, BsArrowDown } from "react-icons/bs";
 import LevelBadge from "../LevelBadge";
 import AuthModal from "../Modal/AuthModal";
-import { useSetRecoilState } from "recoil";
+import { useResetRecoilState, useSetRecoilState } from "recoil";
 import { authModalState } from "../../atoms/authModalAtom";
+import { signOut } from "firebase/auth";
 
 type indexProps = {};
 
 const Index: React.FC<indexProps> = () => {
   const [user] = useAuthState(auth);
   const setAuthModalState = useSetRecoilState(authModalState);
+
+  const resetCommunityState = useResetRecoilState(authModalState);
+  const logout = async () => {
+    await signOut(auth);
+    resetCommunityState();
+  };
 
   return (
     <Flex
@@ -92,7 +99,7 @@ const Index: React.FC<indexProps> = () => {
                 className="relative rounded-full"
               />
               <LevelBadge level={2} top="-12.5px" height="40px" width="40px" />
-              <Button>Sign out</Button>
+              <Button onClick={() => logout()}>Sign out</Button>
             </Flex>
           ) : (
             <Button

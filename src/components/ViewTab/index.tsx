@@ -1,10 +1,11 @@
 import { useState } from "react";
 import React from "react";
-import { Flex, Text } from "@chakra-ui/react";
+import { Button, Flex, Text } from "@chakra-ui/react";
 import useSelectFile from "@/hooks/useSelectFile";
 import TabItem from "./TabItem";
 import Portfolio from "../Portfolio";
 import Resume from "../Resume";
+import Link from "next/link";
 
 type indexProps = {};
 
@@ -39,6 +40,12 @@ const Index: React.FC<indexProps> = () => {
       <Flex>
         {selectedTab === "Portfolio" && <Portfolio />}
         {selectedTab === "Resume" && <Resume />}
+      </Flex>
+      <Flex className="mt-3" direction="row" justify="space-between">
+        <Flex></Flex>
+        <Link href="/edit">
+          <Button>Edit Profile</Button>
+        </Link>
       </Flex>
     </Flex>
   );

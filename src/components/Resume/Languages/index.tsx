@@ -29,13 +29,6 @@ const Index: React.FC<indexProps> = () => {
           </Box>
         ))}
       </Flex>
-
-      <Flex className="mt-3" direction="row" justify="space-between">
-        <Flex></Flex>
-        <Link href="/edit">
-          <Button>Edit Profile</Button>
-        </Link>
-      </Flex>
     </Flex>
   );
 };
