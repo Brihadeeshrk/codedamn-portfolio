@@ -9,7 +9,7 @@ type ProjectCardProps = {
 const ProjectCard: React.FC<ProjectCardProps> = ({ ProjectStats }) => {
   return (
     <Flex
-      width="100s%"
+      width="100%"
       className="bg-slate-100 p-2 mt-2 rounded-lg"
       direction="column"
     >
