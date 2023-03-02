@@ -12,14 +12,20 @@ import {
 import Link from "next/link";
 import React, { useState } from "react";
 import { BsFillLightningChargeFill, BsBell } from "react-icons/bs";
-
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/firebase/clientApp";
 import { BsSearch, BsArrowDown } from "react-icons/bs";
 import LevelBadge from "../LevelBadge";
+import AuthModal from "../Modal/AuthModal";
+import { useSetRecoilState } from "recoil";
+import { authModalState } from "../../atoms/authModalAtom";
 
 type indexProps = {};
 
 const Index: React.FC<indexProps> = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [user] = useAuthState(auth);
+  const setAuthModalState = useSetRecoilState(authModalState);
+
   return (
     <Flex
       height="50px"
@@ -62,7 +68,7 @@ const Index: React.FC<indexProps> = () => {
         </InputRightElement>
       </InputGroup>
       {/* RightContent */}
-      <Flex width="20%" justify="space-evenly">
+      <Flex width="30%" justify="space-evenly">
         {/* <RightContent /> */}
         <Flex width="100%" align="center" justify="space-evenly">
           {/* Streak */}
@@ -75,7 +81,8 @@ const Index: React.FC<indexProps> = () => {
           <Icon as={BsBell} display={{ sm: "none", md: "flex" }} />
 
           {/* Profile Picture */}
-          {loggedIn ? (
+          <AuthModal />
+          {user ? (
             <Flex>
               <Image
                 src="/assets/stock.jpeg"
@@ -85,9 +92,15 @@ const Index: React.FC<indexProps> = () => {
                 className="relative rounded-full"
               />
               <LevelBadge level={2} top="-12.5px" height="40px" width="40px" />
+              <Button>Sign out</Button>
             </Flex>
           ) : (
-            <Button className="text-sm" onClick={() => setLoggedIn(!loggedIn)}>
+            <Button
+              className="text-sm"
+              onClick={() => {
+                setAuthModalState({ open: true, view: "login" });
+              }}
+            >
               Log in
             </Button>
           )}

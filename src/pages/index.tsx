@@ -5,9 +5,12 @@ import Head from "next/head";
 import Link from "next/link";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/clientApp";
+import { authModalState } from "@/atoms/authModalAtom";
+import { useSetRecoilState } from "recoil";
 
 export default function Home() {
   const [user] = useAuthState(auth);
+  const setAuthModalState = useSetRecoilState(authModalState);
 
   return (
     <>
@@ -60,7 +63,13 @@ export default function Home() {
             <Text className="text-2xl font-black mt-2 mb-2">
               Log in to make your own!
             </Text>
-            <Button>Log in</Button>
+            <Button
+              onClick={() => {
+                setAuthModalState({ open: true, view: "login" });
+              }}
+            >
+              Log in
+            </Button>
           </>
         )}
       </Flex>
