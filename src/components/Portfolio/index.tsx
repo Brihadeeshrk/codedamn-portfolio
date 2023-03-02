@@ -11,7 +11,7 @@ const index: React.FC<indexProps> = () => {
   return (
     <Flex
       direction="column"
-      className="w-full bg-yellow-200"
+      className="w-full"
       borderRadius={4}
       maxWidth="728px"
       margin="5% auto 10% auto"

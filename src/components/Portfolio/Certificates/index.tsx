@@ -41,7 +41,7 @@ const index: React.FC<indexProps> = () => {
     <Flex direction="column" justify="center" className="mt-8" width="100%">
       <Flex justify="space-between" align="center">
         <Text className="font-bold text-xl mb-2">Certificates</Text>
-        <Text className="font-bold text-xs mb-2 text-indigo-700">
+        <Text className="cursor-pointer font-bold text-xs mb-2 text-indigo-700">
           Add new certificate
         </Text>
       </Flex>
