@@ -5,6 +5,8 @@ export type Visibility = {
   visible: boolean;
 };
 export interface UserProfile {
+  profilePic?: string;
+  bannerPic?: string;
   displayname: string;
   about: string;
   profession?: string;

@@ -9,17 +9,21 @@ import {
   Text,
   Textarea,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useSetRecoilState, useRecoilState } from "recoil";
 import { profileState, UserProfile } from "../../../atoms/userAtom";
 import router from "next/router";
 import { doc, writeBatch } from "firebase/firestore";
 import { firestore } from "@/firebase/clientApp";
+import useSelectFile from "@/hooks/useSelectFile";
 
 type IndexProps = {};
 
 const Index: React.FC<IndexProps> = () => {
   // const [date, setDate] = useState("");
+  const selectedFileRef = useRef<HTMLInputElement>(null);
+  const { onSelectFile, selectedFile, setSelectedFile } = useSelectFile();
+
   const [profileStateValue, setProfileState] = useRecoilState(profileState);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -35,8 +39,11 @@ const Index: React.FC<IndexProps> = () => {
     setProfileState((prev) => ({
       ...prev,
       [name]: value,
+      profilePic: selectedFile,
     }));
   };
+
+  // console.log(selectedFile);
 
   const onClick = () => {
     router.push(`/user/${router.query["portfolioName"]}`);
@@ -47,9 +54,16 @@ const Index: React.FC<IndexProps> = () => {
       {/* Upload New Picture */}
       <Flex direction="row" align="center">
         <Image
-          src="/assets/stock.jpeg"
+          src={selectedFile ? selectedFile : "/assets/stock.jpeg"}
           className="rounded-full h-16"
           alt="avatar"
+        />
+        <input
+          ref={selectedFileRef}
+          type="file"
+          hidden
+          name="profilePic"
+          onChange={onSelectFile}
         />
         <Button
           padding="10px 10px"
@@ -57,6 +71,9 @@ const Index: React.FC<IndexProps> = () => {
           fontSize="8pt"
           color="white"
           ml={4}
+          onClick={() => {
+            selectedFileRef.current?.click();
+          }}
         >
           Upload new picture
         </Button>

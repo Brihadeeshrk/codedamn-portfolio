@@ -40,7 +40,7 @@ const Index: React.FC<indexProps> = () => {
       {/* Banner */}
       <Flex direction="row" width="100%">
         <Image
-          src="/assets/banner.png"
+          src={"/assets/banner.png"}
           alt="Banner Image"
           position="relative"
         />
@@ -66,7 +66,11 @@ const Index: React.FC<indexProps> = () => {
       <Flex width="100%" className="rounded-b-xl border-2 border-slate-100">
         <Flex width="25%">
           <Image
-            src="/assets/stock.jpeg"
+            src={
+              profileValue.profilePic
+                ? profileValue.profilePic
+                : "/assets/stock.jpeg"
+            }
             alt="Profile Picture"
             height={{ sm: "20%", md: "40%" }}
             className="z-50 rounded-full"
