@@ -1,5 +1,6 @@
 import HeroCard from "@/components/HeroCard";
 import ViewTab from "@/components/ViewTab";
+import { Flex, Image, Text } from "@chakra-ui/react";
 import Head from "next/head";
 
 export default function Home() {
@@ -12,8 +13,21 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <HeroCard />
-      <ViewTab />
+      {/* <HeroCard /> */}
+      {/* <ViewTab /> */}
+
+      <Flex
+        direction="column"
+        align="center"
+        justify="center"
+        width="100%"
+        className="p-3 mt-24 bg-yellow-100 rounded-lg"
+      >
+        <Text className="text-2xl font-black mb-8">
+          Want a portfolio just like this?
+        </Text>
+        <Image src="/assets/banner2.png" alt="sample banner" width="100%" />
+      </Flex>
     </>
   );
 }
