@@ -1,6 +1,6 @@
 import { Flex, Icon, Text } from "@chakra-ui/react";
 import React from "react";
-
+import Link from "next/link";
 import { AiFillHtml5 } from "react-icons/ai";
 import { FaReact } from "react-icons/fa";
 import PlaygroundCard from "./PlaygroundCard";
@@ -63,9 +63,11 @@ const index: React.FC<indexProps> = () => {
     <Flex direction="column" justify="center" className="mt-8" width="100%">
       <Flex justify="space-between" align="center">
         <Text className="font-bold text-xl mb-2">Playgrounds</Text>
-        <Text className="cursor-pointer font-bold text-xs mb-2 text-indigo-700">
-          Create new playground
-        </Text>
+        <Link href="/edit">
+          <Text className="cursor-pointer font-bold text-xs mb-2 text-indigo-700">
+            Create new playground
+          </Text>
+        </Link>
       </Flex>
 
       <Flex direction="row" align="center" justify="center" width="100%">

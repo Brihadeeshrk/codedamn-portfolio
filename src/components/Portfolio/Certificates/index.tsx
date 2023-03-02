@@ -1,4 +1,5 @@
-import { Flex, Icon, Text } from "@chakra-ui/react";
+import { Button, Flex, Icon, Text } from "@chakra-ui/react";
+import Link from "next/link";
 import React from "react";
 
 import { AiFillHtml5 } from "react-icons/ai";
@@ -41,9 +42,11 @@ const index: React.FC<indexProps> = () => {
     <Flex direction="column" justify="center" className="mt-8" width="100%">
       <Flex justify="space-between" align="center">
         <Text className="font-bold text-xl mb-2">Certificates</Text>
-        <Text className="cursor-pointer font-bold text-xs mb-2 text-indigo-700">
-          Add new certificate
-        </Text>
+        <Link href="/edit">
+          <Text className="cursor-pointer font-bold text-xs mb-2 text-indigo-700">
+            Add new certificate
+          </Text>
+        </Link>
       </Flex>
 
       <Flex direction="row" align="center" justify="center" width="100%">
@@ -55,6 +58,13 @@ const index: React.FC<indexProps> = () => {
           <CertificateCard CertificateDetails={Certificates[1]} />
           <CertificateCard CertificateDetails={Certificates[3]} />
         </Flex>
+      </Flex>
+
+      <Flex className="mt-3" direction="row" justify="space-between">
+        <Flex></Flex>
+        <Link href="/edit">
+          <Button>Edit Profile</Button>
+        </Link>
       </Flex>
     </Flex>
   );

@@ -41,18 +41,20 @@ const index: React.FC<indexProps> = () => {
           position="relative"
         />
         <Box>
-          <Button
-            position="relative"
-            variant="banner"
-            right="100px"
-            top="10px"
-            height="20pt"
-            fontSize="7pt"
-            className="p-1 z-50"
-          >
-            <Icon as={FiEdit} className="mr-2" />
-            Edit cover
-          </Button>
+          <Link href="/edit">
+            <Button
+              position="relative"
+              variant="banner"
+              right="100px"
+              top="10px"
+              height="20pt"
+              fontSize="7pt"
+              className="p-1 z-50"
+            >
+              <Icon as={FiEdit} className="mr-2" />
+              Edit cover
+            </Button>
+          </Link>
         </Box>
       </Flex>
 

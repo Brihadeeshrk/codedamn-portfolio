@@ -1,4 +1,5 @@
 import { Flex, Icon, Text } from "@chakra-ui/react";
+import Link from "next/link";
 import React from "react";
 
 import { DiCss3Full, DiJavascript1 } from "react-icons/di";
@@ -59,9 +60,11 @@ const index: React.FC<indexProps> = () => {
     <Flex direction="column" justify="center" className="mt-8" width="100%">
       <Flex justify="space-between" align="center">
         <Text className="font-bold text-xl mb-2">Projects</Text>
-        <Text className="cursor-pointer font-bold text-xs mb-2 text-indigo-700">
-          Create new project
-        </Text>
+        <Link href="/edit">
+          <Text className="cursor-pointer font-bold text-xs mb-2 text-indigo-700">
+            Create new project
+          </Text>
+        </Link>
       </Flex>
       {/* {Projects.map((item, index) => (
         <>

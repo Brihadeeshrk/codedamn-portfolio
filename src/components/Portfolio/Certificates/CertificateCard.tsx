@@ -25,16 +25,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ CertificateDetails }) => {
           See credentials
         </Text>
       </Flex>
-      <Flex align="center">
-        {/* {ProjectStats.stack.map((item, index) => (
-          <Badge key={index}>
-            <Flex direction="row" align="center" className="">
-              <Icon as={item.icon} className="mr-1" />
-              <Text className="text-xs">{item.name}</Text>
-            </Flex>
-          </Badge>
-        ))} */}
-      </Flex>
     </Flex>
   );
 };

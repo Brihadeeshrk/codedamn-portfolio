@@ -1,4 +1,5 @@
-import { Badge, Box, Flex, Text } from "@chakra-ui/react";
+import { Badge, Box, Button, Flex, Text } from "@chakra-ui/react";
+import Link from "next/link";
 import React from "react";
 
 type indexProps = {};
@@ -27,6 +28,13 @@ const Index: React.FC<indexProps> = () => {
             </Badge>
           </Box>
         ))}
+      </Flex>
+
+      <Flex className="mt-3" direction="row" justify="space-between">
+        <Flex></Flex>
+        <Link href="/edit">
+          <Button>Edit Profile</Button>
+        </Link>
       </Flex>
     </Flex>
   );

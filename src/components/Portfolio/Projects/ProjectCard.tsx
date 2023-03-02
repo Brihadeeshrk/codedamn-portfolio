@@ -18,14 +18,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ ProjectStats }) => {
           <Image
             src={ProjectStats.banner}
             alt={ProjectStats.title}
-            height={{ sm: "50px", md: "50%" }}
+            height={{ sm: "50px", md: "130px" }}
             width={{ sm: "150px", md: "100%" }}
             className="rounded-lg"
           />
         ) : (
           <Box
             className="bg-slate-400 rounded-lg"
-            height={{ sm: "50px", md: "100px" }}
+            height={{ sm: "50px", md: "130px" }}
             width={{ sm: "150px", md: "100%" }}
           ></Box>
         )}
