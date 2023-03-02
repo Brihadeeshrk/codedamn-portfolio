@@ -9,11 +9,39 @@ import {
   Text,
   Textarea,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
+import { useSetRecoilState, useRecoilState } from "recoil";
+import { profileState, UserProfile } from "../../../atoms/userAtom";
+import router from "next/router";
+import { doc, writeBatch } from "firebase/firestore";
+import { firestore } from "@/firebase/clientApp";
 
 type IndexProps = {};
 
 const Index: React.FC<IndexProps> = () => {
+  // const [date, setDate] = useState("");
+  const [profileStateValue, setProfileState] = useRecoilState(profileState);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const onChange = (
+    event: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const {
+      target: { name, value },
+    } = event;
+
+    setProfileState((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const onClick = () => {
+    router.push(`/user/${router.query["portfolioName"]}`);
+  };
+
   return (
     <Flex width="100%" direction="column">
       {/* Upload New Picture */}
@@ -41,32 +69,48 @@ const Index: React.FC<IndexProps> = () => {
       <Flex direction="column" className="mt-6">
         {/* Display Name */}
         <Text className="text-sm text-black font-bold mb-1">Display name</Text>
-        <Input _placeholder={{ fontSize: "5pt" }} />
+        <Input
+          _placeholder={{ fontSize: "5pt" }}
+          name="displayname"
+          onChange={onChange}
+        />
         <Text className="text-xs text-slate-400 mt-1">
           Name entered above will be used for all issued certificates
         </Text>
 
         {/* About */}
         <Text className="text-sm text-black font-bold mt-4 mb-1">About</Text>
-        <Textarea size="sm" />
+        <Textarea size="sm" name="about" onChange={onChange} />
 
         {/* Profession */}
         <Text className="text-sm text-black font-bold mt-4 mb-1">
           Profession
         </Text>
-        <Input _placeholder={{ fontSize: "5pt" }} />
+        <Input
+          _placeholder={{ fontSize: "5pt" }}
+          name="profession"
+          onChange={onChange}
+        />
 
         {/* Date of birth */}
         <Text className="text-sm text-black font-bold mt-4 mb-1">
           Date of birth
         </Text>
-        <Input placeholder="Select Date and Time" size="md" type="date" />
+        <Input
+          name="dateofbirth"
+          placeholder="Select Date and Time"
+          size="md"
+          type="date"
+          onChange={onChange}
+        />
 
         {/* Gender */}
         <Text className="text-sm text-black font-bold mt-4 mb-1">Gender</Text>
         <Select
+          name="gender"
           placeholder="What is your gender"
           _placeholder={{ color: "gray.200" }}
+          onChange={onChange}
         >
           <option value="male">Male</option>
           <option value="female">Female</option>
@@ -90,7 +134,7 @@ const Index: React.FC<IndexProps> = () => {
                 Shows your followers and the users you follow on codedamn
               </Text>
             </Box>
-            <Switch />
+            <Switch name="fandf" />
           </Flex>
 
           {/* XP */}
@@ -101,7 +145,7 @@ const Index: React.FC<IndexProps> = () => {
                 Shows the XP you have earned
               </Text>
             </Box>
-            <Switch />
+            <Switch name="xp" />
           </Flex>
 
           {/* Achievement Badges */}
@@ -112,7 +156,10 @@ const Index: React.FC<IndexProps> = () => {
                 Shows your relative percentile and profeciency
               </Text>
             </Box>
-            <Switch />
+            <Switch
+              name="achievementbadges"
+              // onChange={(event) => console.log(event.target.value)}
+            />
           </Flex>
         </Flex>
       </Flex>
@@ -121,7 +168,7 @@ const Index: React.FC<IndexProps> = () => {
         <Flex></Flex>
         <Flex>
           <Button mr={2}>Cancel</Button>
-          <Button bg="#4F46E5" color="white">
+          <Button bg="#4F46E5" color="white" onClick={onClick}>
             Save changes
           </Button>
         </Flex>

@@ -5,7 +5,8 @@ import useSelectFile from "@/hooks/useSelectFile";
 import TabItem from "./TabItem";
 import Portfolio from "../Portfolio";
 import Resume from "../Resume";
-import Link from "next/link";
+// import Link from "next/link";
+import router from "next/router";
 
 type indexProps = {};
 
@@ -13,6 +14,8 @@ const Index: React.FC<indexProps> = () => {
   const tabs = ["Portfolio", "Resume"];
   const [selectedTab, setSelectedTab] = useState(tabs[0]);
   const { selectedFile, setSelectedFile, onSelectFile } = useSelectFile();
+
+  const route = router.query["portfolioName"];
 
   return (
     <Flex
@@ -43,9 +46,11 @@ const Index: React.FC<indexProps> = () => {
       </Flex>
       <Flex className="mt-3" direction="row" justify="space-between">
         <Flex></Flex>
-        <Link href="/edit">
-          <Button>Edit Profile</Button>
-        </Link>
+        {/* <Link href=> */}
+        <Button onClick={() => router.push(`/user/${route}/edit`)}>
+          Edit Profile
+        </Button>
+        {/* </Link> */}
       </Flex>
     </Flex>
   );

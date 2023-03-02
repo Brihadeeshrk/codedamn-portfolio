@@ -1,12 +1,16 @@
+import { profileState } from "@/atoms/userAtom";
 import { Badge, Box, Button, Flex, Image, Text, Icon } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
 import { CiLocationOn } from "react-icons/ci";
 import { FiEdit } from "react-icons/fi";
+import { useRecoilState } from "recoil";
 
 type indexProps = {};
 
-const index: React.FC<indexProps> = () => {
+const Index: React.FC<indexProps> = () => {
+  const [profileValue, setProfileData] = useRecoilState(profileState);
+
   let badges = [
     "HTML5",
     "CSS3",
@@ -41,20 +45,20 @@ const index: React.FC<indexProps> = () => {
           position="relative"
         />
         <Box>
-          <Link href="/edit">
-            <Button
-              position="relative"
-              variant="banner"
-              right="100px"
-              top="10px"
-              height="20pt"
-              fontSize="7pt"
-              className="p-1 z-50"
-            >
-              <Icon as={FiEdit} className="mr-2" />
-              Edit cover
-            </Button>
-          </Link>
+          {/* <Link href="/edit"> */}
+          <Button
+            position="relative"
+            variant="banner"
+            right="100px"
+            top="10px"
+            height="20pt"
+            fontSize="7pt"
+            className="p-1 z-50"
+          >
+            <Icon as={FiEdit} className="mr-2" />
+            Edit cover
+          </Button>
+          {/* </Link> */}
         </Box>
       </Flex>
 
@@ -75,7 +79,7 @@ const index: React.FC<indexProps> = () => {
         <Flex width="75%" direction="column" className="p-3">
           {/* Name and Badges */}
           <Flex width="100%" align="center" className="mt-4">
-            <Text className="font-bold mr-2">Brihadeesh R K</Text>
+            <Text className="font-bold mr-2">{profileValue.displayname}</Text>
             <Badge
               className="mr-2"
               colorScheme="green"
@@ -91,7 +95,7 @@ const index: React.FC<indexProps> = () => {
           {/* Bio */}
           <Flex direction="column" justify="flex-start">
             <Text className="text-gray-400 text-sm">
-              Full Stack Developer, Student | MSRIT 2023{" "}
+              {profileValue.about} | {profileValue.profession}
             </Text>
             <Text className="text-gray-400 text-sm">
               <Icon as={CiLocationOn} className=" mr-2" />
@@ -146,4 +150,4 @@ const index: React.FC<indexProps> = () => {
     </Flex>
   );
 };
-export default index;
+export default Index;

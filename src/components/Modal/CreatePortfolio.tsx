@@ -62,6 +62,7 @@ const CreatePortfolio: React.FC<CreatePortfolioProps> = () => {
 
         transaction.set(commDocRef, {
           creatorID: user?.uid,
+          name: name,
           createdAt: serverTimestamp(),
         });
 
@@ -74,7 +75,7 @@ const CreatePortfolio: React.FC<CreatePortfolioProps> = () => {
         // );
       });
       handleClose();
-      if (router.pathname === "/") router.push(`/user/${portfolioName}`);
+      if (router.pathname === "/") router.push(`/user/${portfolioName}/edit`);
       else {
         router.push(`/user/${portfolioName}`);
         setTimeout(() => window.location.reload(), 1000);

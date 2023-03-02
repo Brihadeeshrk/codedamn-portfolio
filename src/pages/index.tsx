@@ -24,9 +24,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <HeroCard />
-      <ViewTab /> */}
-
       <Flex
         direction="column"
         align="center"

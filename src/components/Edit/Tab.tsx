@@ -1,6 +1,10 @@
-import { TabList } from "@/pages/edit";
 import { Flex, Icon, Text } from "@chakra-ui/react";
 import React from "react";
+
+export type TabList = {
+  title: string;
+  icon: typeof Icon.arguments;
+};
 
 type TabProps = {
   item: TabList;

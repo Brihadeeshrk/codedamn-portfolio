@@ -1,8 +1,15 @@
+import HeroCard from "@/components/HeroCard";
+import ViewTab from "@/components/ViewTab";
 import React from "react";
 
 type indexProps = {};
 
 const index: React.FC<indexProps> = () => {
-  return <div>Have a good coding</div>;
+  return (
+    <>
+      <HeroCard />
+      <ViewTab />{" "}
+    </>
+  );
 };
 export default index;
