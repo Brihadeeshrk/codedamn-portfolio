@@ -1,16 +1,9 @@
-import React from "react";
 import { Flex, Icon, Text } from "@chakra-ui/react";
+import React from "react";
 
-import { AiFillHtml5 } from "react-icons/ai";
+import { DiCss3Full, DiJavascript1 } from "react-icons/di";
 import { FaReact } from "react-icons/fa";
-import { DiCss3Full, DiJava, DiJavascript1 } from "react-icons/di";
-import {
-  SiTypescript,
-  SiNextdotjs,
-  SiGatsby,
-  SiPython,
-  SiFirebase,
-} from "react-icons/si";
+import { SiNextdotjs } from "react-icons/si";
 import ProjectCard from "./ProjectCard";
 
 type indexProps = {};

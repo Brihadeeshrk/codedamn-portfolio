@@ -1,15 +1,7 @@
-import { Flex, Text, Icon, Badge, Box } from "@chakra-ui/react";
+import { Badge, Box, Flex, Icon, Text } from "@chakra-ui/react";
 import React from "react";
-import { AiFillHtml5 } from "react-icons/ai";
-import { FaReact } from "react-icons/fa";
-import { DiCss3Full, DiJava, DiJavascript1 } from "react-icons/di";
-import {
-  SiTypescript,
-  SiNextdotjs,
-  SiGatsby,
-  SiPython,
-  SiFirebase,
-} from "react-icons/si";
+import { DiJavascript1 } from "react-icons/di";
+import { SiFirebase, SiNextdotjs, SiTypescript } from "react-icons/si";
 
 type indexProps = {};
 

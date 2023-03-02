@@ -1,4 +1,4 @@
-import { Badge, Box, Flex, Icon, Image, Text } from "@chakra-ui/react";
+import { Flex, Icon, Text } from "@chakra-ui/react";
 import React from "react";
 import { Certificate } from "./index";
 

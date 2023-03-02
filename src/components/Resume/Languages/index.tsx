@@ -1,4 +1,4 @@
-import { Flex, Text, Icon, Badge, Box } from "@chakra-ui/react";
+import { Badge, Box, Flex, Text } from "@chakra-ui/react";
 import React from "react";
 
 type indexProps = {};
