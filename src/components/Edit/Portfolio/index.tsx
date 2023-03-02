@@ -1,6 +1,6 @@
 import { Playground } from "@/components/Portfolio/Playgrounds";
 import PlaygroundCard from "@/components/Portfolio/Playgrounds/PlaygroundCard";
-import { Flex, Text } from "@chakra-ui/react";
+import { Button, Flex, Text } from "@chakra-ui/react";
 import React from "react";
 import { AiFillHtml5 } from "react-icons/ai";
 import { FaReact } from "react-icons/fa";
@@ -118,6 +118,16 @@ const Index: React.FC<IndexProps> = () => {
         <Flex width="50%" direction="column">
           <ProjectShowcase ProjectData={ProjectData[1]} />
           <ProjectShowcase ProjectData={ProjectData[3]} />
+        </Flex>
+      </Flex>
+
+      <Flex direction="row" justify="space-between" className="mt-4">
+        <Flex></Flex>
+        <Flex>
+          <Button mr={2}>Cancel</Button>
+          <Button bg="#4F46E5" color="white">
+            Save changes
+          </Button>
         </Flex>
       </Flex>
     </Flex>
