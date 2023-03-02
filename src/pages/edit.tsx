@@ -26,17 +26,23 @@ const Edit: React.FC<editProps> = () => {
 
   return (
     <Flex direction="row" width="100%" className="mt-24">
-      <Flex direction="column" width="35%" className="p-2">
-        {formTabs.map((item, index) => (
-          <>
-            <Tab
-              key={index}
-              item={item}
-              selected={item.title === selectedTab}
-              setSelected={setSelectedTab}
-            />
-          </>
-        ))}
+      <Flex direction="column" width="35%" className="p-2 ">
+        <Flex
+          direction="column"
+          width="75%"
+          className="p-2 bg-slate-100 rounded-lg"
+        >
+          {formTabs.map((item, index) => (
+            <>
+              <Tab
+                key={index}
+                item={item}
+                selected={item.title === selectedTab}
+                setSelected={setSelectedTab}
+              />
+            </>
+          ))}
+        </Flex>
       </Flex>
       <Flex width="65%" className="p-2 ">
         {selectedTab === "Profile" && <Profile />}

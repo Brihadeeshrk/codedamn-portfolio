@@ -17,7 +17,7 @@ const Index: React.FC<IndexProps> = () => {
   return (
     <Flex width="100%" direction="column">
       {/* Upload New Picture */}
-      <Flex direction="row" width="100%" align="center">
+      <Flex direction="row" align="center">
         <Image
           src="/assets/stock.jpeg"
           className="rounded-full h-16"
@@ -114,6 +114,16 @@ const Index: React.FC<IndexProps> = () => {
             </Box>
             <Switch />
           </Flex>
+        </Flex>
+      </Flex>
+
+      <Flex direction="row" justify="space-between" className="mt-4">
+        <Flex></Flex>
+        <Flex>
+          <Button mr={2}>Cancel</Button>
+          <Button bg="#4F46E5" color="white">
+            Save changes
+          </Button>
         </Flex>
       </Flex>
     </Flex>
