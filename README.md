@@ -1,3 +1,11 @@
+## Deployment Link
+
+[Click Here](https://codedamn-portfolio.vercel.app/) to visit the deployed website and try it out!
+
+## Demo and Explanation
+
+[Click Here]() to watch the video where I talk about the Tech Stack and give a demo
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
