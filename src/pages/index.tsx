@@ -23,8 +23,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <Flex
+      {/* <Flex
         direction="column"
         align="center"
         justify="center"
@@ -37,17 +36,14 @@ export default function Home() {
               Let&apos;s build your portfolio!
             </Text>
 
-            {/* <Link href="/edit"> */}
             <CreatePortfolio />
             <Button
               onClick={() => {
-                // setAuthModalState({ open: true, view: "login" });
                 setCreateModalState({ open: true });
               }}
             >
               Build
             </Button>
-            {/* </Link> */}
           </>
         ) : (
           <>
@@ -88,7 +84,9 @@ export default function Home() {
             </Button>
           </>
         )}
-      </Flex>
+      </Flex> */}
+      <HeroCard />
+      <ViewTab />{" "}
     </>
   );
 }

@@ -16,6 +16,15 @@ export interface UserProfile {
   visibility: Visibility[];
 }
 
+export interface UserSocials {
+  github?: string;
+  linkedin?: string;
+  facebook?: string;
+  instagram?: string;
+  dribble?: string;
+  behance?: string;
+}
+
 const defaultProfileState: UserProfile = {
   displayname: "Placeholder Name",
   bio: "Placeholder Name",
@@ -46,7 +55,21 @@ const defaultProfileState: UserProfile = {
   ],
 };
 
+const defaultSocialState: UserSocials = {
+  github: "",
+  linkedin: "",
+  facebook: "",
+  instagram: "",
+  dribble: "",
+  behance: "",
+};
+
 export const profileState = atom<UserProfile>({
   key: "profileState",
   default: defaultProfileState,
+});
+
+export const socialState = atom<UserSocials>({
+  key: "socialState",
+  default: defaultSocialState,
 });

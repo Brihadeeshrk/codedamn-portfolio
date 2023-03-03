@@ -9,13 +9,13 @@ type indexProps = {
 
 const index: React.FC<indexProps> = ({ children }) => {
   return (
-    <>
+    <div>
       <Header />
       <Box margin="0px auto" mt="60px" width="75%">
         {children}
       </Box>
       <Footer />
-    </>
+    </div>
   );
 };
 export default index;

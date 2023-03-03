@@ -1,19 +1,15 @@
-import { useState } from "react";
-import React from "react";
-import { Button, Flex, Text } from "@chakra-ui/react";
-import useSelectFile from "@/hooks/useSelectFile";
-import TabItem from "./TabItem";
+import { Button, Flex } from "@chakra-ui/react";
+import React, { useState } from "react";
 import Portfolio from "../Portfolio";
 import Resume from "../Resume";
-// import Link from "next/link";
-import router from "next/router";
+import TabItem from "./TabItem";
+import Link from "next/link";
 
 type indexProps = {};
 
 const Index: React.FC<indexProps> = () => {
   const tabs = ["Portfolio", "Resume"];
   const [selectedTab, setSelectedTab] = useState(tabs[0]);
-  const { selectedFile, setSelectedFile, onSelectFile } = useSelectFile();
 
   return (
     <Flex
@@ -44,11 +40,9 @@ const Index: React.FC<indexProps> = () => {
       </Flex>
       <Flex className="mt-3" direction="row" justify="space-between">
         <Flex></Flex>
-        {/* <Link href=> */}
-        {/* <Button onClick={() => router.push(`/user/${route}/edit`)}>
-          Edit Profile
-        </Button> */}
-        {/* </Link> */}
+        <Link href="/edit">
+          <Button>Edit Profile</Button>
+        </Link>
       </Flex>
     </Flex>
   );

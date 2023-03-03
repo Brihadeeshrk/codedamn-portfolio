@@ -1,16 +1,17 @@
-import { profileState } from "@/atoms/userAtom";
+import { profileState, socialState } from "@/atoms/userAtom";
 import useSelectBannerPic from "@/hooks/useSelectBanner";
-import { Badge, Box, Button, Flex, Image, Text, Icon } from "@chakra-ui/react";
+import { Badge, Box, Button, Flex, Icon, Image, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import React, { useRef } from "react";
 import { CiLocationOn } from "react-icons/ci";
 import { FiEdit } from "react-icons/fi";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 type indexProps = {};
 
 const Index: React.FC<indexProps> = () => {
   const [profileValue, setProfileData] = useRecoilState(profileState);
+  const socialStateValues = useRecoilValue(socialState);
 
   let badges = [
     "HTML5",
@@ -25,11 +26,11 @@ const Index: React.FC<indexProps> = () => {
   ];
 
   const socials = [
-    { image: "/assets/google.png", link: "" },
-    { image: "/assets/insta.png", link: "" },
-    { image: "/assets/fb.webp", link: "" },
-    { image: "/assets/li.png", link: "https://linkedin.com/in/brihadeeshrk" },
-    { image: "/assets/yt.png", link: "" },
+    { image: "/assets/google.png", link: socialStateValues.github as string },
+    { image: "/assets/insta.png", link: socialStateValues.instagram as string },
+    { image: "/assets/fb.webp", link: socialStateValues.facebook as string },
+    { image: "/assets/li.png", link: socialStateValues.linkedin as string },
+    { image: "/assets/yt.png", link: socialStateValues.behance as string },
   ];
 
   const selectedBannerRef = useRef<HTMLInputElement>(null);

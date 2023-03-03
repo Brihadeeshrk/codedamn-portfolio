@@ -39,6 +39,7 @@ const CreatePortfolio: React.FC<CreatePortfolioProps> = () => {
     console.log(name);
   };
 
+  /*
   const createPortfolio = async () => {
     if (error) setError("");
     const portfolioName = name.toLowerCase().split(" ").join("");
@@ -65,14 +66,6 @@ const CreatePortfolio: React.FC<CreatePortfolioProps> = () => {
           name: name,
           createdAt: serverTimestamp(),
         });
-
-        // transaction.set(
-        //   doc(firestore, `users/${user?.uid}/communitySnippets`, commName),
-        //   {
-        //     communityId: commName,
-        //     isModerator: true,
-        //   }
-        // );
       });
       handleClose();
       if (router.pathname === "/") router.push(`/user/${portfolioName}/edit`);
@@ -85,6 +78,7 @@ const CreatePortfolio: React.FC<CreatePortfolioProps> = () => {
     }
     setLoading(false);
   };
+  */
 
   return (
     <>
@@ -121,7 +115,7 @@ const CreatePortfolio: React.FC<CreatePortfolioProps> = () => {
               isLoading={loading}
               width="100%"
               className="mt-4"
-              onClick={createPortfolio}
+              // onClick={createPortfolio}
             >
               Submit
             </Button>

@@ -92,7 +92,7 @@ const Index: React.FC<indexProps> = () => {
           {user ? (
             <Flex>
               <Image
-                src="/assets/stock.jpeg"
+                src={user ? user.photoURL! : "/assets/stock.jpeg"}
                 alt=""
                 height="40px"
                 width="40px"
