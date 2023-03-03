@@ -15,8 +15,6 @@ const Index: React.FC<indexProps> = () => {
   const [selectedTab, setSelectedTab] = useState(tabs[0]);
   const { selectedFile, setSelectedFile, onSelectFile } = useSelectFile();
 
-  const route = router.query["portfolioName"];
-
   return (
     <Flex
       direction="column"
@@ -47,9 +45,9 @@ const Index: React.FC<indexProps> = () => {
       <Flex className="mt-3" direction="row" justify="space-between">
         <Flex></Flex>
         {/* <Link href=> */}
-        <Button onClick={() => router.push(`/user/${route}/edit`)}>
+        {/* <Button onClick={() => router.push(`/user/${route}/edit`)}>
           Edit Profile
-        </Button>
+        </Button> */}
         {/* </Link> */}
       </Flex>
     </Flex>

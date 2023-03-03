@@ -1,10 +1,11 @@
 import { profileState } from "@/atoms/userAtom";
+import useSelectBannerPic from "@/hooks/useSelectBanner";
 import { Badge, Box, Button, Flex, Image, Text, Icon } from "@chakra-ui/react";
 import Link from "next/link";
-import React from "react";
+import React, { useRef } from "react";
 import { CiLocationOn } from "react-icons/ci";
 import { FiEdit } from "react-icons/fi";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
 type indexProps = {};
 
@@ -30,6 +31,19 @@ const Index: React.FC<indexProps> = () => {
     { image: "/assets/li.png", link: "https://linkedin.com/in/brihadeeshrk" },
     { image: "/assets/yt.png", link: "" },
   ];
+
+  const selectedBannerRef = useRef<HTMLInputElement>(null);
+  const { onSelectBannerPic, selectedBannerPic, setSelectedBannerPic } =
+    useSelectBannerPic();
+
+  const onClick = () => {
+    selectedBannerRef.current?.click();
+    setProfileData((prev) => ({
+      ...prev,
+      bannerPic: selectedBannerPic,
+    }));
+  };
+
   return (
     <Flex
       className="bg-white rounded-lg mt-24"
@@ -40,12 +54,17 @@ const Index: React.FC<indexProps> = () => {
       {/* Banner */}
       <Flex direction="row" width="100%">
         <Image
-          src={"/assets/banner.png"}
+          src={selectedBannerPic ? selectedBannerPic : profileValue.bannerPic}
           alt="Banner Image"
           position="relative"
         />
         <Box>
-          {/* <Link href="/edit"> */}
+          <input
+            ref={selectedBannerRef}
+            type="file"
+            hidden
+            onChange={onSelectBannerPic}
+          />
           <Button
             position="relative"
             variant="banner"
@@ -54,11 +73,11 @@ const Index: React.FC<indexProps> = () => {
             height="20pt"
             fontSize="7pt"
             className="p-1 z-50"
+            onClick={onClick}
           >
             <Icon as={FiEdit} className="mr-2" />
             Edit cover
           </Button>
-          {/* </Link> */}
         </Box>
       </Flex>
 
@@ -66,11 +85,7 @@ const Index: React.FC<indexProps> = () => {
       <Flex width="100%" className="rounded-b-xl border-2 border-slate-100">
         <Flex width="25%">
           <Image
-            src={
-              profileValue.profilePic
-                ? profileValue.profilePic
-                : "/assets/stock.jpeg"
-            }
+            src={profileValue.profilePic}
             alt="Profile Picture"
             height={{ sm: "20%", md: "40%" }}
             className="z-50 rounded-full"
@@ -99,7 +114,7 @@ const Index: React.FC<indexProps> = () => {
           {/* Bio */}
           <Flex direction="column" justify="flex-start">
             <Text className="text-gray-400 text-sm">
-              {profileValue.about} | {profileValue.profession}
+              {profileValue.bio} | {profileValue.profession}
             </Text>
             <Text className="text-gray-400 text-sm">
               <Icon as={CiLocationOn} className=" mr-2" />

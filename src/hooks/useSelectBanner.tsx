@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useSetRecoilState } from "recoil";
+import { profileState } from "../atoms/userAtom";
 
 const useSelectBannerPic = () => {
   const [selectedBannerPic, setSelectedBannerPic] = useState<string>();

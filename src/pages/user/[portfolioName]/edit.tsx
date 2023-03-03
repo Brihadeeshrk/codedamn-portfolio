@@ -44,7 +44,7 @@ const Edit: React.FC<editProps> = () => {
           ))}
         </Flex>
       </Flex>
-      <Flex width="65%" className="p-2 ">
+      <Flex width="65%" className="p-2 mb-24">
         {selectedTab === "Profile" && <Profile />}
         {selectedTab === "Socials" && <Socials />}
         {selectedTab === "Portfolio" && <Portfolio />}

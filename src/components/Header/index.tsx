@@ -96,9 +96,9 @@ const Index: React.FC<indexProps> = () => {
                 alt=""
                 height="40px"
                 width="40px"
-                className="relative rounded-full"
+                className="relative rounded-full mr-2"
               />
-              <LevelBadge level={2} top="-12.5px" height="40px" width="40px" />
+              {/* <LevelBadge level={2} top="-12.5px" height="40px" width="40px" /> */}
               <Button onClick={() => logout()}>Sign out</Button>
             </Flex>
           ) : (

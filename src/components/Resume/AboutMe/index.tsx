@@ -1,10 +1,18 @@
 import { Button, Flex, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { profileState } from "../../../atoms/userAtom";
 
 type indexProps = {};
 
 const Index: React.FC<indexProps> = () => {
   const [readMore, setReadMore] = useState(false);
+  const profileStateValues = useRecoilValue(profileState);
+
+  function truncate(str: string, maxlength: number) {
+    return str.length > maxlength ? str.slice(0, maxlength - 1) + "…" : str;
+  }
+
   return (
     <Flex direction="column" align="center" justify="center" className="mt-2">
       <Text className="font-bold text-xl">About Me</Text>
@@ -13,23 +21,9 @@ const Index: React.FC<indexProps> = () => {
         direction="column"
       >
         {!readMore ? (
-          <Text>
-            I'm a Senior Information Science and Engineering Student at
-            M.S.Ramaiah Institute of Technology. I'm a Web Developer by interest
-            and I'm eager to learn new skills and Technologies. I also built and
-            maintain my blog, where I post articles on topics I find
-            interesting/challenging...
-          </Text>
+          <Text>{truncate(profileStateValues.about, 250)}</Text>
         ) : (
-          <Text>
-            I'm a Senior Information Science and Engineering Student at
-            M.S.Ramaiah Institute of Technology. I'm a Web Developer by interest
-            and I'm eager to learn new skills and Technologies. I also built and
-            maintain my blog, where I post articles on topics I find
-            interesting/challenging. I'm currently fluent with the MERN stack,
-            but I'm working on projects to strengthen my experience when it
-            comes to Technologies such as Next, Gatsby.
-          </Text>
+          <Text>{profileStateValues.about}</Text>
         )}
         <Button
           className="mt-2"

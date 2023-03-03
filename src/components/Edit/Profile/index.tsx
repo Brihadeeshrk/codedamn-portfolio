@@ -1,3 +1,4 @@
+import useSelectFile from "@/hooks/useSelectFile";
 import {
   Box,
   Button,
@@ -9,24 +10,26 @@ import {
   Text,
   Textarea,
 } from "@chakra-ui/react";
-import React, { useRef, useState } from "react";
-import { useSetRecoilState, useRecoilState } from "recoil";
-import { profileState, UserProfile } from "../../../atoms/userAtom";
 import router from "next/router";
-import { doc, writeBatch } from "firebase/firestore";
-import { firestore } from "@/firebase/clientApp";
-import useSelectFile from "@/hooks/useSelectFile";
+import React, { useRef, useState } from "react";
+import { useRecoilState } from "recoil";
+import { profileState } from "../../../atoms/userAtom";
 
 type IndexProps = {};
 
 const Index: React.FC<IndexProps> = () => {
-  // const [date, setDate] = useState("");
   const selectedFileRef = useRef<HTMLInputElement>(null);
   const { onSelectFile, selectedFile, setSelectedFile } = useSelectFile();
-
-  const [profileStateValue, setProfileState] = useRecoilState(profileState);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [profileStateValue, setProfileState] = useRecoilState(profileState);
+
+  // Badge Visibility
+  const [badgesVis, setBadgesVis] = useState(false);
+  // XP Visibility
+  const [XPVis, setXPVis] = useState(false);
+  // Followers Visibility
+  const [FAndF, setFandF] = useState(false);
+
   const onChange = (
     event: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -43,10 +46,30 @@ const Index: React.FC<IndexProps> = () => {
     }));
   };
 
-  // console.log(selectedFile);
-
   const onClick = () => {
+    setLoading(true);
+    setProfileState((prev) => ({
+      ...prev,
+      visibility: [
+        { name: "fandf", visible: !FAndF },
+        { name: "xp", visible: !XPVis },
+        { name: "achievementbadges", visible: !badgesVis },
+      ],
+    }));
+
+    console.log("Final Profile: ", profileStateValue);
+    setLoading(false);
     router.push(`/user/${router.query["portfolioName"]}`);
+  };
+
+  const BadgeSwitchHandler = () => {
+    setBadgesVis(!badgesVis);
+  };
+  const XPSwitchHandler = () => {
+    setXPVis(!XPVis);
+  };
+  const FandFSwitchHandler = () => {
+    setFandF(!FAndF);
   };
 
   return (
@@ -54,7 +77,7 @@ const Index: React.FC<IndexProps> = () => {
       {/* Upload New Picture */}
       <Flex direction="row" align="center">
         <Image
-          src={selectedFile ? selectedFile : "/assets/stock.jpeg"}
+          src={selectedFile ? selectedFile : profileStateValue.profilePic}
           className="rounded-full h-16"
           alt="avatar"
         />
@@ -77,7 +100,12 @@ const Index: React.FC<IndexProps> = () => {
         >
           Upload new picture
         </Button>
-        <Button fontSize="8pt" color="gray.700" ml={4}>
+        <Button
+          fontSize="8pt"
+          color="gray.700"
+          ml={4}
+          onClick={() => setSelectedFile("")}
+        >
           Delete
         </Button>
       </Flex>
@@ -94,6 +122,16 @@ const Index: React.FC<IndexProps> = () => {
         <Text className="text-xs text-slate-400 mt-1">
           Name entered above will be used for all issued certificates
         </Text>
+
+        {/* Bio */}
+        <Text className="text-sm text-black font-bold mt-4  mb-1">
+          Header Bio
+        </Text>
+        <Input
+          _placeholder={{ fontSize: "5pt" }}
+          name="bio"
+          onChange={onChange}
+        />
 
         {/* About */}
         <Text className="text-sm text-black font-bold mt-4 mb-1">About</Text>
@@ -151,7 +189,11 @@ const Index: React.FC<IndexProps> = () => {
                 Shows your followers and the users you follow on codedamn
               </Text>
             </Box>
-            <Switch name="fandf" />
+            <Switch
+              name="fandf"
+              defaultChecked={profileStateValue.visibility[0].visible}
+              onChange={FandFSwitchHandler}
+            />
           </Flex>
 
           {/* XP */}
@@ -162,7 +204,11 @@ const Index: React.FC<IndexProps> = () => {
                 Shows the XP you have earned
               </Text>
             </Box>
-            <Switch name="xp" />
+            <Switch
+              name="xp"
+              defaultChecked={profileStateValue.visibility[1].visible}
+              onChange={XPSwitchHandler}
+            />
           </Flex>
 
           {/* Achievement Badges */}
@@ -175,7 +221,8 @@ const Index: React.FC<IndexProps> = () => {
             </Box>
             <Switch
               name="achievementbadges"
-              // onChange={(event) => console.log(event.target.value)}
+              defaultChecked={profileStateValue.visibility[2].visible}
+              onClick={BadgeSwitchHandler}
             />
           </Flex>
         </Flex>
@@ -185,7 +232,12 @@ const Index: React.FC<IndexProps> = () => {
         <Flex></Flex>
         <Flex>
           <Button mr={2}>Cancel</Button>
-          <Button bg="#4F46E5" color="white" onClick={onClick}>
+          <Button
+            bg="#4F46E5"
+            color="white"
+            onClick={onClick}
+            isLoading={loading}
+          >
             Save changes
           </Button>
         </Flex>
