@@ -4,7 +4,7 @@
 
 ## Demo and Explanation
 
-[Click Here]() to watch the video where I talk about the Tech Stack and give a demo
+[Click Here](https://youtu.be/9eT2F5JrBhs) to watch the video where I talk about the Tech Stack and give a demo
 
 ---
 
